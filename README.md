@@ -1,8 +1,10 @@
-# dns-report.ps1
+# DNS report.ps1
 
 Script de PowerShell 7 que consulta registros DNS (**A**, **MX**, **NS** y **PTR**) para un dominio o una dirección IP, genera un **reporte HTML** con estilo y lo abre automáticamente en el navegador.
 
 ---
+<img width="1874" height="850" alt="image" src="https://github.com/user-attachments/assets/9624832f-40e6-4f66-b9b2-18bcb4c8dd2f" />
+
 
 ## Índice
 
