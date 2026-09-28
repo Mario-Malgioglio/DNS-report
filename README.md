@@ -91,7 +91,7 @@ El parámetro `-Target` es posicional en la primera posición, y `-OutputPath` e
 
 | Parámetro | Tipo | Obligatorio | Posición | Descripción |
 |---|---|---|---|---|
-| `-Target` | `string` | Sí | 0 | Dominio (ej: `lacapital.com.ar`) o dirección IP (ej: `8.8.8.8`). |
+| `-Target` | `string` | Sí | 0 | Dominio (ej: `example.com`) o dirección IP (ej: `8.8.8.8`). |
 | `-OutputPath` | `string` | No | 1 | Ruta del HTML de salida. Por defecto: directorio actual con timestamp `DNS-Report-YYYYMMDD-HHmmss.html`. |
 | `-NoOpen` | `switch` | No | — | Si se especifica, no abre el reporte en el navegador al finalizar. |
 
@@ -102,7 +102,7 @@ El parámetro `-Target` es posicional en la primera posición, y `-OutputPath` e
 ### Consultar un dominio y abrir el reporte
 
 ```powershell
-.\dns-report.ps1 -Target lacapital.com.ar
+.\dns-report.ps1 -Target example.com
 ```
 
 Genera `DNS-Report-YYYYMMDD-HHmmss.html` en el directorio actual y lo abre en el navegador.
@@ -118,19 +118,19 @@ Cuando `-Target` es una IP, se omite la consulta A/MX/NS y solo se realiza la b�
 ### Guardar el reporte en una ruta específica
 
 ```powershell
-.\dns-report.ps1 -Target lacapital.com.ar -OutputPath C:\Temp\lacapital.html
+.\dns-report.ps1 -Target example.com -OutputPath C:\Temp\example.html
 ```
 
 ### Generar el reporte sin abrirlo
 
 ```powershell
-.\dns-report.ps1 -Target lacapital.com.ar -NoOpen
+.\dns-report.ps1 -Target example.com -NoOpen
 ```
 
 ### Uso posicional
 
 ```powershell
-.\dns-report.ps1 lacapital.com.ar
+.\dns-report.ps1 example.com
 .\dns-report.ps1 8.8.8.8 C:\Temp\google-dns.html
 ```
 
@@ -143,20 +143,20 @@ Cuando `-Target` es una IP, se omite la consulta A/MX/NS y solo se realiza la b�
 Se muestra en colores el progreso de cada consulta:
 
 ```
-=== Consultas DNS para: lacapital.com.ar ===
+=== Consultas DNS para: example.com ===
 Modo: Dominio (A, MX, NS, PTR)
 
-[1] Registros A para: lacapital.com.ar
-  A     www.lacapital.com.ar  ->  104.18.x.x  (TTL 300)
+[1] Registros A para: example.com
+  A     www.example.com  ->  93.184.x.x  (TTL 300)
 
-[2] Registros MX para: lacapital.com.ar
-  MX    lacapital.com.ar  ->  mx1.example.com  (Pref 10)
+[2] Registros MX para: example.com
+  MX    example.com  ->  mx1.example.com  (Pref 10)
 
-[3] Registros NS para: lacapital.com.ar
-  NS    lacapital.com.ar  ->  ns1.example.com
+[3] Registros NS para: example.com
+  NS    example.com  ->  ns1.example.com
 
-[4] Registros PTR para: 104.18.x.x
-  Sin PTR para 104.18.x.x. No implica necesariamente Cloudflare; ...
+[4] Registros PTR para: 93.184.x.x
+  Sin PTR para 93.184.x.x. No implica necesariamente Cloudflare; ...
 
 Reporte HTML generado en: C:\Temp\DNS-Report-20260928-121834.html
 Abriendo el reporte en el navegador...
@@ -316,7 +316,7 @@ Add-MpPreference -ControlledFolderAccessAllowedApplications $pwsh
 **Workaround inmediato** (sin tocar el sistema): usar una ruta alternativa.
 
 ```powershell
-.\dns-report.ps1 -Target lacapital.com.ar -OutputPath C:\Temp\reporte.html
+.\dns-report.ps1 -Target example.com -OutputPath C:\Temp\reporte.html
 ```
 
 El script ya cae automáticamente al fallback, así que aunque `Scripts` esté roto, el reporte se genera igual en `%TEMP%`.
@@ -328,7 +328,7 @@ El script ya cae automáticamente al fallback, así que aunque `Scripts` esté r
 - Para desactivar la apertura automática:
 
 ```powershell
-.\dns-report.ps1 -Target lacapital.com.ar -NoOpen
+.\dns-report.ps1 -Target example.com -NoOpen
 ```
 
 ### Los acentos o la `ñ` se ven mal en el reporte
